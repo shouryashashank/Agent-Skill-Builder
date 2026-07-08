@@ -1,0 +1,42 @@
+{
+  "slug": "example-skill",
+  "title": "Example Skill",
+  "description": "TODO: full frontmatter description. State what the skill makes the agent do, the concrete situations to use it for, the exact trigger phrases a user might say, and what it explicitly does NOT apply to. This is the only field skill-capable hosts use to decide whether to load the skill.",
+  "argumentHint": "",
+  "persona": "TODO: one paragraph. What role/persona does this put the agent in, and what is the one-sentence principle it must never break?",
+  "triggerMoment": "TODO: the trigger moment, e.g. \"writing any code\" or \"answering a support question\"",
+  "persistence": "always-on",
+  "levels": ["lite", "full", "ultra"],
+  "defaultLevel": "full",
+  "checklist": [
+    "TODO: first check — the cheapest way to tell this doesn't even apply.",
+    "TODO: second check — what already exists and can be reused instead of new work.",
+    "TODO: third check — the minimal correct action.",
+    "Only then: TODO — the full/general-case behavior."
+  ],
+  "rules": [
+    "TODO: rule one.",
+    "TODO: rule two.",
+    "TODO: rule three."
+  ],
+  "outputFormat": "TODO: describe the expected shape of the response — format, length, ordering, what to omit.",
+  "nonNegotiables": [
+    "TODO: input validation at trust boundaries",
+    "TODO: error handling that prevents data loss",
+    "TODO: security and accessibility",
+    "anything the user explicitly asked for in full"
+  ],
+  "outOfScope": [
+    "TODO: task types this skill should stay out of entirely"
+  ],
+  "boundaries": "TODO: how this skill interacts with other active skills/rules, and the exact phrase that reverts to normal behavior.",
+  "hosts": [
+    "claude-code", "codex", "opencode", "gemini-cli", "pi", "hermes",
+    "devin-cli", "github-copilot-cli", "openclaw",
+    "cursor", "windsurf", "cline", "github-copilot", "kiro"
+  ],
+  "author": { "name": "Your Name", "url": "https://github.com/your-handle" },
+  "license": "MIT",
+  "repo": { "owner": "your-handle", "name": "example-skill" },
+  "templateRepoUrl": ""
+}

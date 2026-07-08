@@ -1,0 +1,7 @@
+{
+  "name": "skill-name-pi-extension",
+  "version": "0.1.0",
+  "description": "TODO: one-line description of what this skill does.",
+  "main": "index.js",
+  "license": "MIT"
+}

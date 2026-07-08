@@ -1,0 +1,4 @@
+name: skill-name
+description: "TODO: one-line description of what this skill does."
+version: 0.1.0
+entry_point: __init__.py

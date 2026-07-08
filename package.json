@@ -1,0 +1,18 @@
+{
+  "name": "skill-name",
+  "version": "0.1.0",
+  "description": "TODO: one-line description of what this skill does.",
+  "private": true,
+  "license": "MIT",
+  "author": {
+    "name": "Your Name",
+    "url": "https://github.com/your-handle"
+  },
+  "templateRepoUrl": "https://github.com/REPLACE_ME/skill-template",
+  "scripts": {
+    "check": "node scripts/check-rule-copies.js",
+    "build:openclaw": "node scripts/build-openclaw-skill.js",
+    "generate": "node scripts/generate-skill.js",
+    "test": "npm run check"
+  }
+}

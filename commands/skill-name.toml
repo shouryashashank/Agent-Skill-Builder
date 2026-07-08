@@ -1,0 +1,2 @@
+description = "TODO one-line description of what this command does."
+prompt = "TODO: prompt body for the /skill-name command. Use {{args}} to reference an argument. Keep this in sync with .opencode/command/skill-name.md — same behavior, different host syntax."
