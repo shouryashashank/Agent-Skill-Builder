@@ -1,0 +1,5 @@
+---
+description: Interview me to design and scaffold a new multi-agent skill.
+---
+
+Start the skill-builder interview: ask me, one topic at a time, for a slug, title, description (with trigger phrases), persona, persistence model, checklist, rules, output format, non-negotiables, target hosts, author, and license. Confirm the summary before generating anything. Then write the answers to a config JSON file and run node scripts/generate-skill.js --config <path> --out <output-path> from this repo, report the result, and give me the next steps to publish it. Arguments, if any: {{args}} (treat as a suggested slug/title).

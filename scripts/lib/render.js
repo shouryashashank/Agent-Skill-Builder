@@ -193,6 +193,10 @@ function buildReadme(config) {
   const templateNote = templateUrl.includes('REPLACE_ME')
     ? `Scaffolded from a skill-authoring template (${templateUrl} — placeholder until the template is public).`
     : `Scaffolded from [this template](${templateUrl}).`;
+  const hasOpenclaw = config.hosts.includes('openclaw');
+  const devCommands = hasOpenclaw
+    ? `npm run check          # verify the duplicated rule files still match AGENTS.md\nnpm run build:openclaw  # regenerate .openclaw/skills/${config.slug}/SKILL.md`
+    : 'npm run check          # verify the duplicated rule files still match AGENTS.md';
 
   return `# ${config.title}
 
@@ -205,8 +209,7 @@ ${readmeInstallSection(config)}
 ## Development
 
 \`\`\`
-npm run check          # verify the duplicated rule files still match AGENTS.md
-npm run build:openclaw  # regenerate .openclaw/skills/${config.slug}/SKILL.md
+${devCommands}
 \`\`\`
 
 Edit \`skills/${config.slug}/SKILL.md\` for the full definition, or \`AGENTS.md\`

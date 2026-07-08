@@ -37,7 +37,13 @@ try {
 const ruleCopyHosts = pkg.ruleCopyHosts || ['cursor', 'windsurf', 'cline', 'github-copilot', 'kiro'];
 
 const canonicalPath = path.join(root, 'AGENTS.md');
-let canonical = fs.readFileSync(canonicalPath, 'utf8').trim();
+let canonical = fs.readFileSync(canonicalPath, 'utf8');
+
+function normalize(text) {
+  return text.replace(/\r\n/g, '\n').trim();
+}
+
+canonical = normalize(canonical);
 
 // AGENTS.md carries one extra trailing paragraph aimed at agents editing
 // *this* repo (e.g. "(this file also applies to agents working on this
@@ -50,11 +56,12 @@ if (/^\(.*\)$/s.test(last)) paragraphs.pop();
 canonical = paragraphs.join('\n\n').trim();
 
 function stripFrontmatter(text) {
-  if (text.startsWith('---')) {
-    const end = text.indexOf('\n---', 3);
-    if (end !== -1) return text.slice(end + 4).trim();
+  const normalized = normalize(text);
+  if (normalized.startsWith('---')) {
+    const end = normalized.indexOf('\n---', 3);
+    if (end !== -1) return normalized.slice(end + 4).trim();
   }
-  return text.trim();
+  return normalized;
 }
 
 const copies = ruleCopyHosts
