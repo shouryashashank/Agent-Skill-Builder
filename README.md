@@ -32,6 +32,24 @@ host-by-host map.
    already pruned. This is the faster path for most new skills; the manual
    steps below are what it automates.
 
+## Build skills from any coding agent
+
+Paste this one-liner into any coding agent (while it's opened in this repo):
+
+```
+Install/load this repo as a plugin/skill source from https://github.com/shouryashashank/Agent-Skill-Builder, then run /skill-builder. Interview me one topic at a time, generate a production-grade multi-host skill at ./generated/<my-skill>, run checks, and finally give me the exact git + gh commands to publish it.
+```
+
+How to use the generated output:
+
+1. The interview writes a config and runs `node scripts/generate-skill.js`.
+2. The new repo appears at `./generated/<my-skill>` (or your chosen path).
+3. Validation runs automatically (`check-rule-copies.js`, plus OpenClaw sync if selected).
+4. The agent prints next-step publish commands (`git init`, `git commit`, `gh repo create`).
+
+Result: one skill repo, one canonical behavior definition, and adapter files
+ready for the hosts you selected.
+
 ## Quick start (manual)
 
 
