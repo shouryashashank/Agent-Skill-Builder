@@ -24,7 +24,19 @@ host-by-host map.
 Paste this one-liner into any coding agent (while it's opened in this repo):
 
 ```
-Install/load this repo as a plugin/skill source from https://github.com/shouryashashank/Agent-Skill-Builder, then run /skill-builder. Interview me one topic at a time, generate a production-grade multi-host skill at ./generated/<my-skill>, run checks, and finally give me the exact git + gh commands to publish it.
+Detect which coding agent you are running in, install/load this repo (https://github.com/shouryashashank/Agent-Skill-Builder) into that agent using its correct plugin/skill command (do not stop at clone), confirm the skill/slash command is available, then invoke skill-builder (/skill-builder where supported). Interview me one topic at a time, generate a production-grade multi-host skill at ./generated/<my-skill>, run checks, and finally give me the exact git + gh commands to publish it.
+```
+
+For OpenCode specifically, run this once after clone:
+
+```
+opencode plugin .
+```
+
+Then run:
+
+```
+/skill-builder
 ```
 
 How to use the generated output:

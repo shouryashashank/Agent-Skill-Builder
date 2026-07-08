@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "description": "TODO: one-line description of what this skill does.",
   "private": true,
+  "main": "./.opencode/plugins/skill-name.mjs",
+  "exports": {
+    "./server": "./.opencode/plugins/skill-name.mjs"
+  },
   "license": "MIT",
   "author": {
     "name": "Your Name",

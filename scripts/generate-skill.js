@@ -286,23 +286,24 @@ function writeGeneratedContent(destRoot, config) {
   const scripts = { check: 'node scripts/check-rule-copies.js' };
   if (has('openclaw')) scripts['build:openclaw'] = 'node scripts/build-openclaw-skill.js';
   scripts.test = 'npm run check';
+  const packageJson = {
+    name: config.slug,
+    version: '0.1.0',
+    description: config.description,
+    private: true,
+    license: config.license,
+    author: config.author,
+    templateRepoUrl: effectiveTemplateRepoUrl,
+    ruleCopyHosts: RULE_COPY_HOSTS.filter((h) => has(h)),
+    scripts,
+  };
+  if (has('opencode')) {
+    packageJson.main = `./.opencode/plugins/${config.slug}.mjs`;
+    packageJson.exports = { './server': `./.opencode/plugins/${config.slug}.mjs` };
+  }
   fs.writeFileSync(
     path.join(destRoot, 'package.json'),
-    JSON.stringify(
-      {
-        name: config.slug,
-        version: '0.1.0',
-        description: config.description,
-        private: true,
-        license: config.license,
-        author: config.author,
-        templateRepoUrl: effectiveTemplateRepoUrl,
-        ruleCopyHosts: RULE_COPY_HOSTS.filter((h) => has(h)),
-        scripts,
-      },
-      null,
-      2,
-    ) + '\n',
+    JSON.stringify(packageJson, null, 2) + '\n',
   );
 
   const body = agentsMdBody(agentsMd);
