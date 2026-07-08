@@ -19,19 +19,6 @@ Everything else in this repo is scaffolding around those two files. See
 [`docs/agent-portability.md`](docs/agent-portability.md) for the full
 host-by-host map.
 
-## Two ways to use this repo
-
-1. **By hand** — follow the Quick start below: rename `skill-name` → your
-   slug, fill in the `TODO`s yourself.
-2. **Interactively** — load the `skill-builder` skill
-   (`skills/skill-builder/SKILL.md`, also available as `/skill-builder`).
-   It interviews you (persona, triggers, checklist, rules, target hosts,
-   author, license), then runs `scripts/generate-skill.js` to scaffold a
-   complete, ready-to-publish skill repo into its own directory — with no
-   `TODO`s left, rule copies already in sync, and unselected host adapters
-   already pruned. This is the faster path for most new skills; the manual
-   steps below are what it automates.
-
 ## Build skills from any coding agent
 
 Paste this one-liner into any coding agent (while it's opened in this repo):
@@ -49,6 +36,19 @@ How to use the generated output:
 
 Result: one skill repo, one canonical behavior definition, and adapter files
 ready for the hosts you selected.
+
+## Two ways to use this repo
+
+1. **By hand** — follow the Quick start below: rename `skill-name` → your
+   slug, fill in the `TODO`s yourself.
+2. **Interactively** — load the `skill-builder` skill
+   (`skills/skill-builder/SKILL.md`, also available as `/skill-builder`).
+   It interviews you (persona, triggers, checklist, rules, target hosts,
+   author, license), then runs `scripts/generate-skill.js` to scaffold a
+   complete, ready-to-publish skill repo into its own directory — with no
+   `TODO`s left, rule copies already in sync, and unselected host adapters
+   already pruned. This is the faster path for most new skills; the manual
+   steps below are what it automates.
 
 ## Quick start (manual)
 
