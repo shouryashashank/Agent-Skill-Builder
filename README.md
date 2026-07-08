@@ -1,4 +1,4 @@
-# Skill Template
+# Agent Skill Builder
 
 A starting point for authoring a coding-agent skill once and running it
 everywhere — Claude Code, Codex, OpenCode, Gemini CLI, pi, Hermes Agent,
