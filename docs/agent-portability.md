@@ -1,9 +1,8 @@
 # Agent Portability
 
-This is a skill-authoring template, not a finished skill. It follows the
-same pattern used by production multi-agent skills (e.g.
-[ponytail](https://github.com/DietrichGebert/ponytail)): **one canonical
-source of behavior, plus thin adapters per host.**
+This is a skill-authoring template, not a finished skill. It follows a
+production portability pattern: **one canonical source of behavior, plus thin
+adapters per host.**
 
 There are exactly two files that hold real content. Everything else either
 points at them or is a synced copy of one of them:

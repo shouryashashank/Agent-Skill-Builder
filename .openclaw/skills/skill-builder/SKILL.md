@@ -95,11 +95,10 @@ node scripts/generate-skill.js --config <path-to-config>.json --out <output-path
 
 If regenerating over a previous attempt, add `--force`.
 
-`templateRepoUrl`: this repository doesn't have a public URL yet. Read the
-current placeholder from this repo's root `package.json` (`templateRepoUrl`
-field) and pass it through unless the user has since given you the real
-public URL — in which case use the real URL for this run **and** update the
-root `package.json`'s `templateRepoUrl` field here so every future
+`templateRepoUrl`: read this repo's root `package.json` (`templateRepoUrl`
+field) and pass it through unless the user explicitly gives a different
+template URL for this run — in that case, use the user-provided URL **and**
+update the root `package.json`'s `templateRepoUrl` field here so future
 generation picks it up automatically (single place to fix, not scattered).
 
 ### 4. Report the result
@@ -110,10 +109,8 @@ prints their result — surface any failure it reported. Then give the user:
 
 - The output path and a one-line file-count summary.
 - The exact next commands it printed (`git init`, `gh repo create`, ...).
-- A reminder, only if `templateRepoUrl` is still a placeholder, that it
-  should be updated in the generated repo's `package.json` once this
-  template is public (or ask the user for the URL right now if they have
-  it).
+- A reminder, only if `templateRepoUrl` is missing/placeholder, that it
+  should be updated in the generated repo's `package.json`.
 
 ## Rules
 

@@ -6,8 +6,8 @@ Hermes's gateway can invoke them directly.
 
 Minimal by design: this has no mode-switching state. If your skill needs
 levels (e.g. lite/full/ultra), add a small state file next to this one and
-read it here — see ponytail's hooks/ponytail-mode-tracker.js for a reference
-implementation in the Node adapters.
+read it here from `pre_llm_call`, mirroring how stateful lifecycle hooks work
+in the Node adapters.
 """
 
 import pathlib

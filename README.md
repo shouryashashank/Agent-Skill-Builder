@@ -6,10 +6,9 @@ Devin CLI, Swival, OpenClaw, GitHub Copilot (editor + CLI), Cursor,
 Windsurf, Cline, and Kiro — without maintaining N separate descriptions of
 the same behavior.
 
-Modeled on the adapter pattern used by
-[ponytail](https://github.com/DietrichGebert/ponytail): **write the
-behavior once, in two canonical files; every other file is either a thin
-pointer at those two files, or a synced copy of one of them.**
+Built around a strict adapter pattern: **write the behavior once, in two
+canonical files; every other file is either a thin pointer at those two
+files, or a synced copy of one of them.**
 
 ```
 skills/skill-name/SKILL.md   ← full skill definition (source of truth #1)
@@ -108,17 +107,17 @@ way it expects, without an if/else per host baked into the content itself.
 ## Adding mode/intensity levels (optional)
 
 This template's behavior is static — always on, or opt-in per request. If
-your skill needs switchable levels (e.g. `lite`/`full`/`ultra`/`off` like
-ponytail), that requires small per-host state:
+your skill needs switchable levels (e.g. `lite`/`full`/`ultra`/`off`), that
+requires small per-host state:
 
 - OpenCode / pi: persist the active level to a file under
   `XDG_CONFIG_HOME`, read it in the plugin's system-prompt transform.
 - Claude Code / Codex: a lifecycle hook (`SessionStart`, pre-prompt) that
   reads the same state and injects the level-appropriate instructions.
 
-Ponytail's `hooks/` directory is a complete reference implementation of
-this if you need it — it's out of scope for this template because most
-skills don't need runtime state.
+A small lifecycle hook implementation in your own repo can handle this if you
+need it — it's out of scope for this template because most skills don't need
+runtime state.
 
 ## Repository layout
 

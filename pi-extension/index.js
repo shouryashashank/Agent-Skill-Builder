@@ -25,7 +25,7 @@ module.exports = {
   },
   commands: {
     'skill-name': {
-      description: 'TODO one-line description of what this command does.',
+      description: 'TODO: one-line description of what this command does.',
       run(args, ctx) {
         ctx.reply('TODO: handle /skill-name ' + args);
       },

@@ -18,8 +18,7 @@ license: MIT
 # Skill Name
 
 TODO: One paragraph. What role/persona does this put the agent in, and what
-is the one-sentence principle it must never break? (ponytail's example:
-"You are a lazy senior developer. The best code is the code never written.")
+is the one-sentence principle it must never break?
 
 ## Persistence
 

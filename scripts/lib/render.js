@@ -189,7 +189,7 @@ function readmeInstallSection(config) {
 }
 
 function buildReadme(config) {
-  const templateUrl = config.templateRepoUrl || 'https://github.com/REPLACE_ME/skill-template';
+  const templateUrl = config.templateRepoUrl || 'https://github.com/shouryashashank/Agent-Skill-Builder';
   const templateNote = templateUrl.includes('REPLACE_ME')
     ? `Scaffolded from a skill-authoring template (${templateUrl} — placeholder until the template is public).`
     : `Scaffolded from [this template](${templateUrl}).`;

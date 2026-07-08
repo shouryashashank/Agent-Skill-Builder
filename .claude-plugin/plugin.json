@@ -2,7 +2,16 @@
   "name": "skill-name",
   "version": "0.1.0",
   "description": "TODO: one-line description of what this skill does.",
+  "license": "MIT",
+  "author": {
+    "name": "Your Name",
+    "url": "https://github.com/your-handle"
+  },
+  "repository": "https://github.com/your-handle/skill-name",
   "skills": [
     "skills"
+  ],
+  "commands": [
+    "commands"
   ]
 }

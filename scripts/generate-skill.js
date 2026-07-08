@@ -17,6 +17,7 @@ const { HOSTS, SHARED_COMMANDS_HOSTS, COMMANDS_PATH, ALL_HOSTS, RULE_COPY_HOSTS 
 const { buildAgentsMd, buildSkillMd, buildReadme } = require('./lib/render');
 
 const TEMPLATE_ROOT = path.resolve(__dirname, '..');
+const TEMPLATE_DEFAULT_REPO_URL = readTemplateRepoUrl();
 
 const EXCLUDE = [
   'generated',
@@ -30,6 +31,20 @@ const EXCLUDE = [
   '.opencode/command/skill-builder.md',
   'commands/skill-builder.toml',
 ];
+
+function readTemplateRepoUrl() {
+  try {
+    const pkgPath = path.join(TEMPLATE_ROOT, 'package.json');
+    const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf8'));
+    return String(pkg.templateRepoUrl || '').trim();
+  } catch {
+    return '';
+  }
+}
+
+function isPlaceholderTemplateUrl(url) {
+  return !url || url.includes('REPLACE_ME');
+}
 
 // ---------------------------------------------------------------------------
 // CLI args
@@ -87,7 +102,9 @@ async function interactiveConfig() {
   const license = (await ask('License (default MIT):')) || 'MIT';
   const repoOwner = await ask('GitHub owner/org for this new skill repo:');
   const repoName = (await ask(`Repo name (default ${slug}):`)) || slug;
-  const templateRepoUrl = await ask('This template\'s public repo URL (leave blank if not pushed yet):');
+  const defaultTemplateRepoPrompt = TEMPLATE_DEFAULT_REPO_URL || 'not set';
+  const templateRepoUrlInput = await ask(`This template's public repo URL (default ${defaultTemplateRepoPrompt}):`);
+  const templateRepoUrl = templateRepoUrlInput.trim() || TEMPLATE_DEFAULT_REPO_URL;
 
   rl.close();
 
@@ -183,6 +200,7 @@ function replaceInString(str, config) {
     .replaceAll('https://github.com/your-handle', config.author.url)
     .replaceAll('Your Name', config.author.name)
     .replaceAll('TODO: one-line description of what this skill does.', config.description)
+    .replaceAll('TODO: one-line description of what this command does.', config.description.split(/\.\s/)[0] + '.')
     .replaceAll('TODO one-line description of what this command does.', config.description.split(/\.\s/)[0] + '.')
     .replaceAll('skill-name', config.slug)
     .replaceAll('Skill Name', config.title)
@@ -246,6 +264,7 @@ function agentsMdBody(agentsMd) {
 }
 
 function writeGeneratedContent(destRoot, config) {
+  const effectiveTemplateRepoUrl = config.templateRepoUrl || TEMPLATE_DEFAULT_REPO_URL || 'https://github.com/REPLACE_ME/skill-template';
   const agentsMd = buildAgentsMd(config);
   fs.writeFileSync(path.join(destRoot, 'AGENTS.md'), agentsMd);
 
@@ -277,7 +296,7 @@ function writeGeneratedContent(destRoot, config) {
         private: true,
         license: config.license,
         author: config.author,
-        templateRepoUrl: config.templateRepoUrl || 'https://github.com/REPLACE_ME/skill-template',
+        templateRepoUrl: effectiveTemplateRepoUrl,
         ruleCopyHosts: RULE_COPY_HOSTS.filter((h) => has(h)),
         scripts,
       },
@@ -384,6 +403,8 @@ async function main() {
     config = JSON.parse(fs.readFileSync(path.resolve(args.config), 'utf8'));
   }
 
+  if (!config.templateRepoUrl) config.templateRepoUrl = TEMPLATE_DEFAULT_REPO_URL;
+
   validate(config);
 
   const destRoot = path.resolve(args.out || path.join(TEMPLATE_ROOT, 'generated', config.slug));
@@ -405,9 +426,9 @@ async function main() {
   console.log(`  cd ${path.relative(process.cwd(), destRoot) || '.'}`);
   console.log('  git init && git add -A && git commit -m "Initial skill scaffold"');
   console.log(`  gh repo create ${config.repo.owner}/${config.repo.name} --public --source=. --push`);
-  if (!config.templateRepoUrl || config.templateRepoUrl.includes('REPLACE_ME')) {
+  if (isPlaceholderTemplateUrl(config.templateRepoUrl)) {
     console.log('\nNote: templateRepoUrl is still a placeholder (package.json + README.md).');
-    console.log('Update it once this template repo has a public URL.');
+    console.log('Update it in this repo\'s package.json so future generations inherit it.');
   }
 }
 

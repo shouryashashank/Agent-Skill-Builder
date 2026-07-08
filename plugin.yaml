@@ -1,4 +1,9 @@
 name: skill-name
 description: "TODO: one-line description of what this skill does."
 version: 0.1.0
+author:
+  name: Your Name
+  url: https://github.com/your-handle
+repository: https://github.com/your-handle/skill-name
+license: MIT
 entry_point: __init__.py

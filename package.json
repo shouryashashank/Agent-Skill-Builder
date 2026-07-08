@@ -8,7 +8,7 @@
     "name": "Your Name",
     "url": "https://github.com/your-handle"
   },
-  "templateRepoUrl": "https://github.com/REPLACE_ME/skill-template",
+  "templateRepoUrl": "https://github.com/shouryashashank/Agent-Skill-Builder",
   "scripts": {
     "check": "node scripts/check-rule-copies.js",
     "build:openclaw": "node scripts/build-openclaw-skill.js",

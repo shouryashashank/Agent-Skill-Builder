@@ -3,5 +3,15 @@
   "version": "0.1.0",
   "description": "TODO: one-line description of what this skill does.",
   "main": "index.js",
-  "license": "MIT"
+  "license": "MIT",
+  "author": {
+    "name": "Your Name",
+    "url": "https://github.com/your-handle"
+  },
+  "repository": "https://github.com/your-handle/skill-name",
+  "keywords": [
+    "TODO",
+    "keywords",
+    "here"
+  ]
 }

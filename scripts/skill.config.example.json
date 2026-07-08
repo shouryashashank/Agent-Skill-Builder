@@ -38,5 +38,5 @@
   "author": { "name": "Your Name", "url": "https://github.com/your-handle" },
   "license": "MIT",
   "repo": { "owner": "your-handle", "name": "example-skill" },
-  "templateRepoUrl": ""
+  "templateRepoUrl": "https://github.com/shouryashashank/Agent-Skill-Builder"
 }
